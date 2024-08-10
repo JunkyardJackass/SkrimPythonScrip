@@ -5,8 +5,6 @@ import time
 import threading
 import keyboard
 
-#Why threading? It wont run correct without, or at least it wont fn stop...
-#Update, it wont stop still.
 stop_event = threading.Event()
 
 def K(key):
@@ -16,13 +14,10 @@ def K(key):
         pyautogui.keyUp(key)
         time.sleep(0.1)
         
-        #JFC STOP NOW GOD DAMN IT.
         if stop_event.is_set():
             return
 
 def perform_sequence():
-
-    #You can do with the sequence what the hell you want. IDC...
     sequence = ['d', 'e', 'a', 's', 'd', 'e', 'a', 's', 'd', 'e', 'r', 'y',
                 'e', 'a', 'w', 'd', 'e', 'a', 'w', 'd', 'e', 'r', 'y']
     while not stop_event.is_set():
@@ -30,9 +25,6 @@ def perform_sequence():
             K(key)
             if stop_event.is_set():
                 break
-        if stop_event.is_set():
-            break
-
 
 def monitor_stop_key():
     while not stop_event.is_set():
@@ -47,8 +39,10 @@ print("Started!")
 sequence_thread = threading.Thread(target=perform_sequence)
 sequence_thread.start()
 
-monitor_stop_key()
+stop_thread = threading.Thread(target=monitor_stop_key)
+stop_thread.start()
 
 sequence_thread.join()
-print("Sequence stopped.")
+stop_thread.join()
 
+print("Sequence stopped.")
