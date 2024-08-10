@@ -6,6 +6,7 @@ import threading
 import keyboard
 
 #Why threading? It wont run correct without, or at least it wont fn stop...
+#Update, it wont stop still.
 stop_event = threading.Event()
 
 def K(key):
