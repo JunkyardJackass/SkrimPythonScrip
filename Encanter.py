@@ -4,7 +4,34 @@ import pyautogui
 import time
 import threading
 import keyboard
+"""
+In file ReadMe.(why? because im not explaining.)
+    SET UP: SKYRIM ENCHANTING
+    
+    Enchanting weapons requires the user to hit E twice (to adjust the calibre of the enchant), 
+        if you would like this function added, you need to swap the commented sections as needed.
+    Swap the comments to activate and deactivate the set up as needed.
 
+***INSTRUCTIONS***
+Open enchanting screen in game.
+
+Empty non consumables from inventory that you don't want used for the process.
+    The macro does not care about your items, Dump entire inventory except what is used for enchanting...
+    
+Start the enchanter
+
+Set up, but do not actually enchant anything. 
+    Run the process but do not start it.
+    Set WHAT enchant you want applied to the items by selecting it at least once, and then UNAPPLY the selection.
+    (I cant prove it, but enchants which make better value for item SHOULD make your more XP)
+    ENSURE no selections are made and hover over the ITEMS line.
+    
+Launch the macro, this script, left click into the game again.
+
+Process should auto burn any consumables for the process that are in your inventory.
+
+Press U to shut the secquence down, or if thats not working because im a lunatic, close the program.
+"""
 stop_event = threading.Event()
 
 def K(key):
@@ -17,8 +44,15 @@ def K(key):
             return
 
 def perform_sequence():
+
+""" # WEAPON enchants, requires additional E key command, uncomment to activate.
+    sequence = ['d', 'e', 'a', 's', 'd', 'e', 'e', 'a', 's', 'd', 'e', 'r', 'y',
+                'e', 'a', 'w', 'd', 'e', 'e', 'a', 'w', 'd', 'e', 'r', 'y']
+"""
+    # Armour enchants, requires only one E key command to pass, uncomment to activate.
     sequence = ['d', 'e', 'a', 's', 'd', 'e', 'a', 's', 'd', 'e', 'r', 'y',
                 'e', 'a', 'w', 'd', 'e', 'a', 'w', 'd', 'e', 'r', 'y']
+
     while not stop_event.is_set():
         for key in sequence:
             if stop_event.is_set():
