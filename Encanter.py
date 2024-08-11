@@ -13,7 +13,6 @@ def K(key):
         time.sleep(0.05)
         pyautogui.keyUp(key)
         time.sleep(0.1)
-        
         if stop_event.is_set():
             return
 
@@ -22,9 +21,10 @@ def perform_sequence():
                 'e', 'a', 'w', 'd', 'e', 'a', 'w', 'd', 'e', 'r', 'y']
     while not stop_event.is_set():
         for key in sequence:
-            K(key)
             if stop_event.is_set():
                 break
+            K(key)
+            
 
 def monitor_stop_key():
     while not stop_event.is_set():
@@ -41,6 +41,8 @@ sequence_thread.start()
 
 stop_thread = threading.Thread(target=monitor_stop_key)
 stop_thread.start()
+
+monitor_stop_key()
 
 sequence_thread.join()
 stop_thread.join()
