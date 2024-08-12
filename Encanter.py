@@ -13,25 +13,20 @@ In file ReadMe.(why? because im not explaining.)
         if you would like this function added, you need to swap the commented sections as needed.
     Swap the comments to activate and deactivate the set up as needed.
 
-***INSTRUCTIONS***
+***ENCHANTING INSTRUCTIONS***
 Open enchanting screen in game.
-
 Empty non consumables from inventory that you don't want used for the process.
-    The macro does not care about your items, Dump entire inventory except what is used for enchanting...
-    
+    The macro does not care about your items, Dump entire inventory except what is used for enchanting...    
 Start the enchanter
-
 Set up, but do not actually enchant anything. 
     Run the process but do not start it.
     Set WHAT enchant you want applied to the items by selecting it at least once, and then UNAPPLY the selection.
     (I cant prove it, but enchants which make better value for item SHOULD make your more XP)
-    ENSURE no selections are made and hover over the ITEMS line.
-    
+    ENSURE no selections are made and hover over the ITEMS line.    
 Launch the macro, this script, left click into the game again.
-
 Process should auto burn any consumables for the process that are in your inventory.
-
 Press U to shut the secquence down, or if thats not working because im a lunatic, close the program.
+
 """
 
 stop_event = threading.Event()
